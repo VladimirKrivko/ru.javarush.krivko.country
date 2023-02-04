@@ -14,6 +14,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.FetchType;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -210,5 +211,60 @@ public class Country {
 
     public void setLanguages(Set<CountryLanguage> languages) {
         this.languages = languages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return  id.equals(country.id) &&
+                code.equals(country.code) &&
+                code_2.equals(country.code_2) &&
+                name.equals(country.name) &&
+                continent == country.continent &&
+                region.equals(country.region) &&
+                area.equals(country.area) &&
+                Objects.equals(yearOfIndependence, country.yearOfIndependence) &&
+                population.equals(country.population) &&
+                Objects.equals(lifeExpectancy, country.lifeExpectancy) &&
+                Objects.equals(GNP, country.GNP) &&
+                Objects.equals(GNPOId, country.GNPOId) &&
+                localName.equals(country.localName) &&
+                government.equals(country.government) &&
+                Objects.equals(headOfState, country.headOfState) &&
+                Objects.equals(capital, country.capital) &&
+                Objects.equals(languages, country.languages);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, code_2, name, continent, region, area, yearOfIndependence,
+                            population, lifeExpectancy, GNP, GNPOId, localName, government,
+                            headOfState, capital, languages);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Country{");
+        sb.append("id=").append(id);
+        sb.append(", code='").append(code).append('\'');
+        sb.append(", code_2='").append(code_2).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", continent=").append(continent);
+        sb.append(", region='").append(region).append('\'');
+        sb.append(", area=").append(area);
+        sb.append(", yearOfIndependence=").append(yearOfIndependence);
+        sb.append(", population=").append(population);
+        sb.append(", lifeExpectancy=").append(lifeExpectancy);
+        sb.append(", GNP=").append(GNP);
+        sb.append(", GNPOId=").append(GNPOId);
+        sb.append(", localName='").append(localName).append('\'');
+        sb.append(", government='").append(government).append('\'');
+        sb.append(", headOfState='").append(headOfState).append('\'');
+        sb.append(", capital=").append(capital);
+        sb.append(", languages=").append(languages);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Entity
@@ -72,5 +73,34 @@ public class CountryLanguage {
 
     public void setPercentage(BigDecimal percentage) {
         this.percentage = percentage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CountryLanguage that = (CountryLanguage) o;
+        return  id.equals(that.id) &&
+                country.equals(that.country) &&
+                language.equals(that.language) &&
+                isOfficial.equals(that.isOfficial) &&
+                percentage.equals(that.percentage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, country, language, isOfficial, percentage);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("CountryLanguage{");
+        sb.append("id=").append(id);
+        sb.append(", country=").append(country);
+        sb.append(", language='").append(language).append('\'');
+        sb.append(", isOfficial=").append(isOfficial);
+        sb.append(", percentage=").append(percentage);
+        sb.append('}');
+        return sb.toString();
     }
 }
