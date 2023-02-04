@@ -1,17 +1,17 @@
 package ru.javarush.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.FetchType;
 
 import java.math.BigDecimal;
 import java.util.Set;
