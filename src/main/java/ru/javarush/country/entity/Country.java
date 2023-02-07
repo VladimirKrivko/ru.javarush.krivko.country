@@ -68,11 +68,11 @@ public class Country {
     @Column(name = "head_of_state", length = 60)
     private String headOfState;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
     private City capital;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     private Set<CountryLanguage> languages;
 
@@ -237,12 +237,12 @@ public class Country {
                 Objects.equals(languages, country.languages);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, code, code_2, name, continent, region, area, yearOfIndependence,
-                            population, lifeExpectancy, GNP, GNPOId, localName, government,
-                            headOfState, capital, languages);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, code, code_2, name, continent, region, area, yearOfIndependence,
+//                            population, lifeExpectancy, GNP, GNPOId, localName, government,
+//                            headOfState, capital, languages);
+//    }
 
     @Override
     public String toString() {

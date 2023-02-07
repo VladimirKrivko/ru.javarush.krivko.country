@@ -16,7 +16,7 @@ public class CountryDAOImpl implements CountryDAO{
 
     @Override
     public List<Country> getAll() {
-        Query<Country> query = sessionFactory.getCurrentSession().createQuery("select c from Country c", Country.class);
+        Query<Country> query = sessionFactory.getCurrentSession().createQuery("select c from Country c join c.languages", Country.class);
         return query.list();
     }
 }

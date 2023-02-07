@@ -6,7 +6,7 @@ import ru.javarush.country.entity.City;
 
 import java.util.List;
 
-public class CityDAOImpl implements CityDAO{
+public class CityDAOImpl implements CityDAO {
 
     private final SessionFactory sessionFactory;
 
@@ -24,7 +24,7 @@ public class CityDAOImpl implements CityDAO{
 
     @Override
     public int getTotalCount() {
-        Query<Integer> query = sessionFactory.getCurrentSession().createQuery("select count(c) from City c", Integer.class);
+        Query<Long> query = sessionFactory.getCurrentSession().createQuery("select count(c) from City c", Long.class);
         return query.uniqueResult().intValue();
     }
 }

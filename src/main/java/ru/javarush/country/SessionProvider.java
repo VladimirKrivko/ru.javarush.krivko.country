@@ -20,7 +20,7 @@ public class SessionProvider {
         properties.put(Environment.USER, "root");
         properties.put(Environment.PASS, "root");
         properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-        properties.put(Environment.SHOW_SQL, "true");
+//        properties.put(Environment.SHOW_SQL, "true");
         properties.put(Environment.HBM2DDL_AUTO, "validate");
         properties.put(Environment.STATEMENT_BATCH_SIZE, "100");
 
