@@ -17,7 +17,7 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class Test {
+public class TestingService {
 
     private final SessionFactory sessionFactory;
     private final CityDAO cityDAO;
@@ -25,7 +25,7 @@ public class Test {
     private final ObjectMapper mapper;
     private final RedisClient redisClient;
 
-    public Test(final SessionFactory sessionFactory) {
+    public TestingService(final SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         cityDAO = new CityDAOImpl(sessionFactory);
         countryDAO = new CountryDAOImpl(sessionFactory);

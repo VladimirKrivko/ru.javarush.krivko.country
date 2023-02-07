@@ -10,8 +10,8 @@ public class Main {
         SessionProvider sessionProvider = new SessionProvider();
         SessionFactory sessionFactory = sessionProvider.getSessionFactory();
 
-        Test test = new Test(sessionFactory);
-        List<City> cities = test.fetchData();
+        TestingService testingService = new TestingService(sessionFactory);
+        List<City> cities = testingService.fetchData();
 
         System.out.println(cities.size());
     }
