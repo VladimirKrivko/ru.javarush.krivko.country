@@ -38,7 +38,7 @@ public class Country {
     private String code;
 
     @Column(name = "code_2", length = 2, nullable = false)
-    private String code_2;
+    private String alternativeCode;
 
     @Column(name = "name", length = 52, nullable = false)
     private String name;
