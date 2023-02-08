@@ -3,6 +3,7 @@ package ru.javarush.country;
 import org.hibernate.SessionFactory;
 import ru.javarush.country.entity.City;
 
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -11,8 +12,16 @@ public class Main {
         SessionFactory sessionFactory = sessionProvider.getSessionFactory();
 
         TestingService testingService = new TestingService(sessionFactory);
-        List<City> cities = testingService.fetchData();
 
-        System.out.println(cities.size());
+        long startTime = new Date().getTime();
+        List<City> cities = testingService.fetchData();
+        long stopTime = new Date().getTime();
+
+        System.out.println(stopTime - startTime);
+
+        //      EAGER             LAZY
+        //      960               438
+        //      959               427
+
     }
 }
