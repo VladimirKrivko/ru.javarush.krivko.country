@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class Language {
     private String name;
 
-    private Boolean isOfficial;
+    private Boolean official;
 
     private BigDecimal percentage;
 }

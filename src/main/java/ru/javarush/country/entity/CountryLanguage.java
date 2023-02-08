@@ -38,7 +38,7 @@ public class CountryLanguage {
 
     @Column(name = "is_official", columnDefinition = "BIT", nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    private Boolean isOfficial;
+    private Boolean official;
 
     @Column(name = "percentage", nullable = false)
     private BigDecimal percentage;
