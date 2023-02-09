@@ -13,26 +13,31 @@ import java.util.stream.Collectors;
 public class CityTransformer {
 
     public List<CityCountry> transformData(List<City> cities) {
-        return cities.stream().map(city -> {
-            CityCountry res = new CityCountry();
-            res.setId(city.getId());
-            res.setCityName(city.getName());
-            res.setDistrict(city.getDistrict());
-            res.setPopulation(city.getPopulation());
+        return cities
+                .stream()
+                .map(this::transformCity)
+                .collect(Collectors.toList());
+    }
 
-            Country country = city.getCountry();
-            res.setCountryCode(country.getCode());
-            res.setAlternativeCountryCode(country.getAlternativeCode());
-            res.setCountryName(country.getName());
-            res.setContinent(country.getContinent());
-            res.setRegion(country.getRegion());
-            res.setCountryArea(country.getArea());
-            res.setCountryPopulation(country.getPopulation());
+    private CityCountry transformCity(City city) {
+        CityCountry cityCountry = new CityCountry();
+        cityCountry.setId(city.getId());
+        cityCountry.setCityName(city.getName());
+        cityCountry.setDistrict(city.getDistrict());
+        cityCountry.setPopulation(city.getPopulation());
 
-            Set<CountryLanguage> countryLanguages = country.getLanguages();
-            res.setLanguages(getLanguages(countryLanguages));
-            return res;
-        }).collect(Collectors.toList());
+        Country country = city.getCountry();
+        cityCountry.setCountryCode(country.getCode());
+        cityCountry.setAlternativeCountryCode(country.getAlternativeCode());
+        cityCountry.setCountryName(country.getName());
+        cityCountry.setContinent(country.getContinent());
+        cityCountry.setRegion(country.getRegion());
+        cityCountry.setCountryArea(country.getArea());
+        cityCountry.setCountryPopulation(country.getPopulation());
+
+        Set<CountryLanguage> countryLanguages = country.getLanguages();
+        cityCountry.setLanguages(getLanguages(countryLanguages));
+        return cityCountry;
     }
 
     private Set<Language> getLanguages(Set<CountryLanguage> countryLanguages) {
