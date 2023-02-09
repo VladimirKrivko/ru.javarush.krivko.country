@@ -1,7 +1,6 @@
 package ru.javarush.country;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.lettuce.core.RedisClient;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,20 +16,16 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class TestingService {
+public class TestingMySQLService {
 
     private final SessionFactory sessionFactory;
     private final CityDAO cityDAO;
     private final CountryDAO countryDAO;
-    private final ObjectMapper mapper;
-    private final RedisClient redisClient;
 
-    public TestingService(final SessionFactory sessionFactory) {
+    public TestingMySQLService(final SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         cityDAO = new CityDAOImpl(sessionFactory);
         countryDAO = new CountryDAOImpl(sessionFactory);
-        mapper = new ObjectMapper();
-        redisClient = null;//prepareRedisClient();
     }
 
     public List<City> fetchData() {
@@ -53,9 +48,6 @@ public class TestingService {
     public void shutdown() {
         if (nonNull(sessionFactory)) {
             sessionFactory.close();
-        }
-        if (nonNull(redisClient)) {
-            redisClient.shutdown();
         }
     }
 }
