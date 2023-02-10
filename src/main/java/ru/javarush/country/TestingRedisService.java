@@ -34,6 +34,20 @@ public class TestingRedisService {
         }
     }
 
+    public void testRedisData(List<Integer> ids) {
+        try (StatefulRedisConnection<String, String> connect = redisClient.connect()) {
+            RedisCommands<String, String> sync = connect.sync();
+            for (Integer id : ids) {
+                String value = sync.get(String.valueOf(id));
+                try {
+                    mapper.readValue(value, CityCountry.class);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public void shutdown() {
         if (nonNull(redisClient)) {
             redisClient.shutdown();

@@ -9,9 +9,11 @@ import ru.javarush.country.dao.CountryDAO;
 import ru.javarush.country.dao.CountryDAOImpl;
 import ru.javarush.country.entity.City;
 import ru.javarush.country.entity.Country;
+import ru.javarush.country.entity.CountryLanguage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
@@ -41,6 +43,17 @@ public class TestingMySQLService {
             }
             transaction.commit();
             return allCities;
+        }
+    }
+
+    public void testMysqlData(List<Integer> ids) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            Transaction transaction = session.beginTransaction();
+            for (Integer id : ids) {
+                City city = cityDAO.getById(id);
+                Set<CountryLanguage> languages = city.getCountry().getLanguages();
+            }
+            transaction.commit();
         }
     }
 

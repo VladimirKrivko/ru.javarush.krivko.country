@@ -27,7 +27,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-//@EqualsAndHashCode
+@EqualsAndHashCode
 @ToString
 public class Country {
 
@@ -82,7 +82,7 @@ public class Country {
     @JoinColumn(name = "capital")
     private City capital;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     private Set<CountryLanguage> languages;
 }

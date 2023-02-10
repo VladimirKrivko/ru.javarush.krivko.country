@@ -14,6 +14,14 @@ public class CityDAOImpl implements CityDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    //TODO: переписать на Optional<>
+    @Override
+    public City getById(Integer id) {
+        Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :id", City.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
+
     @Override
     public List<City> getItems(int offset, int limit) {
         Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c", City.class);
