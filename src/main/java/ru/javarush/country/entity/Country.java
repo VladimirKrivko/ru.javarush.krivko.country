@@ -1,5 +1,6 @@
 package ru.javarush.country.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,7 +27,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @ToString
 public class Country {
 
@@ -81,7 +82,7 @@ public class Country {
     @JoinColumn(name = "capital")
     private City capital;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private Set<CountryLanguage> languages;
 }

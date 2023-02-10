@@ -1,6 +1,5 @@
 package ru.javarush.country;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -5,7 +5,6 @@ import org.hibernate.SessionFactory;
 import ru.javarush.country.entity.City;
 import ru.javarush.country.redis.CityCountry;
 
-import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -25,18 +24,6 @@ public class Main {
         testingRedisService.pushToRedis(cityCountries);
 
 
-
-
-
-
-        long startTime = new Date().getTime();
-        long stopTime = new Date().getTime();
-
-        System.out.println(stopTime - startTime);
-
-        //      EAGER             LAZY
-        //      960               438
-        //      959               427
 
     }
 }
