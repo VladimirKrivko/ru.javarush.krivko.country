@@ -5,6 +5,8 @@ import org.hibernate.query.Query;
 import ru.javarush.country.entity.City;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
 public class CityDAOImpl implements CityDAO {
 
@@ -14,12 +16,17 @@ public class CityDAOImpl implements CityDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    //TODO: переписать на Optional<>
+    //TODO: Optional не работает! Переделать.
     @Override
     public City getById(Integer id) {
         Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :id", City.class);
         query.setParameter("id", id);
-        return query.getSingleResult();
+        City city = query.getSingleResult();
+        City result = Optional.ofNullable(city).orElseGet(() -> {
+            Query<City> defaultQuery = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = 1", City.class);
+            return defaultQuery.getSingleResult();
+        });
+        return result;
     }
 
     @Override

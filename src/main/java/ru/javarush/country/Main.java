@@ -17,15 +17,14 @@ public class Main {
         RedisClient redisClient = redisClientProvider.prepareRedisClient();
         TestingRedisService testingRedisService = new TestingRedisService(redisClient);
 
-//        List<City> allCities = testingMySQLService.fetchData();
+        List<City> allCities = testingMySQLService.fetchData();
 
-//        CityTransformer cityTransformer = new CityTransformer();
-//        List<CityCountry> cityCountries = cityTransformer.transformData(allCities);
-//        testingRedisService.pushToRedis(cityCountries);
+        CityTransformer cityTransformer = new CityTransformer();
+        List<CityCountry> cityCountries = cityTransformer.transformData(allCities);
+        testingRedisService.pushToRedis(cityCountries);
 
-//        sessionFactory.close();
 
-        List<Integer> ids = List.of(3, 2545, 123, 4, 189, 89, 3458, 1189, 10, 102);
+        List<Integer> ids = List.of(1, 2545, 123, 4, 189, 89, 3458, 1189, 10, 102);
 
         long startRedis = System.currentTimeMillis();
         testingRedisService.testRedisData(ids);
@@ -42,3 +41,9 @@ public class Main {
         testingMySQLService.shutdown();
     }
 }
+
+//        Пересоздаю testingMySQLService
+//        sessionFactory.close();
+//        SessionProvider newSessionProvider = new SessionProvider();
+//        sessionFactory = newSessionProvider.getSessionFactory();
+//        testingMySQLService = new TestingMySQLService(sessionFactory);
