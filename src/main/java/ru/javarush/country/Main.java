@@ -4,10 +4,16 @@ import io.lettuce.core.RedisClient;
 import org.hibernate.SessionFactory;
 import ru.javarush.country.entity.City;
 import ru.javarush.country.redis.CityCountry;
+import ru.javarush.country.utility.Randomizer;
+import ru.javarush.country.utility.SpeedTestOfDataAvailability;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.LongStream;
 
 public class Main {
+    private static final int NUMBER_OF_TEST_ITERATIONS = 10;
     public static void main(String[] args) {
         SessionProvider sessionProvider = new SessionProvider();
         SessionFactory sessionFactory = sessionProvider.getSessionFactory();
@@ -24,23 +30,40 @@ public class Main {
         testingRedisService.pushToRedis(cityCountries);
 
 
-        List<Integer> ids = List.of(1, 2545, 123, 4, 189, 89, 3458, 1189, 10, 102);
+        long[] redisExecutionTime = new long[NUMBER_OF_TEST_ITERATIONS];
+        long[] mysqlExecutionTime = new long[NUMBER_OF_TEST_ITERATIONS];
 
-        long startRedis = System.currentTimeMillis();
-        testingRedisService.testRedisData(ids);
-        long stopRedis = System.currentTimeMillis();
+        for (int i = 0; i < NUMBER_OF_TEST_ITERATIONS; i++) {
+            List<Integer> ids = getListIds();
 
-        long startMysql = System.currentTimeMillis();
-        testingMySQLService.testMysqlData(ids);
-        long stopMysql = System.currentTimeMillis();
+            redisExecutionTime[i] = SpeedTestOfDataAvailability.getExecutionTime(testingRedisService, ids);
+            mysqlExecutionTime[i] = SpeedTestOfDataAvailability.getExecutionTime(testingMySQLService, ids);
+        }
 
-        System.out.printf("%s:\t%d ms\n", "Redis", (stopRedis - startRedis));
-        System.out.printf("%s:\t%d ms\n", "MySQL", (stopMysql - startMysql));
+        OptionalDouble averageRedis = LongStream.of(redisExecutionTime).average();
+        OptionalDouble averageMysql = LongStream.of(mysqlExecutionTime).average();
+
+        System.out.printf("%s:\t%.2f ms\n", "average time for Redis", averageRedis.getAsDouble());
+        System.out.printf("%s:\t%.2f ms\n", "average time for MySQL", averageMysql.getAsDouble());
+
 
         testingRedisService.shutdown();
         testingMySQLService.shutdown();
     }
+
+    private static List<Integer> getListIds() {
+        List<Integer> ids = new ArrayList<>(NUMBER_OF_TEST_ITERATIONS);
+        for (int i = 0; i < NUMBER_OF_TEST_ITERATIONS; i++) {
+            ids.add(i, Randomizer.getRandomInteger(4000));
+        }
+        return ids;
+    }
 }
+
+
+
+
+
 
 //        Пересоздаю testingMySQLService
 //        sessionFactory.close();

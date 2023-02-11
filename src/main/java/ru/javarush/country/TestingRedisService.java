@@ -11,7 +11,7 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class TestingRedisService {
+public class TestingRedisService implements TestingService {
 
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
@@ -34,7 +34,7 @@ public class TestingRedisService {
         }
     }
 
-    public void testRedisData(List<Integer> ids) {
+    public void testData(List<Integer> ids) {
         try (StatefulRedisConnection<String, String> connect = redisClient.connect()) {
             RedisCommands<String, String> sync = connect.sync();
             for (Integer id : ids) {

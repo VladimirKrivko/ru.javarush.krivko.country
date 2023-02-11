@@ -17,7 +17,7 @@ import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
-public class TestingMySQLService {
+public class TestingMySQLService implements TestingService{
 
     private final SessionFactory sessionFactory;
     private final CityDAO cityDAO;
@@ -46,7 +46,7 @@ public class TestingMySQLService {
         }
     }
 
-    public void testMysqlData(List<Integer> ids) {
+    public void testData(List<Integer> ids) {
         try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
             for (Integer id : ids) {
