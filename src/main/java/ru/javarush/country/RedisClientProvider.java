@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 public class RedisClientProvider {
 
-    public static final Logger logger = LoggerFactory.getLogger(RedisClientProvider.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisClientProvider.class);
 
     public RedisClient prepareRedisClient() {
         RedisClient redisClient = RedisClient.create(RedisURI.create("localhost", 6379));

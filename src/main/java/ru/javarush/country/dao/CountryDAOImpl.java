@@ -6,7 +6,7 @@ import ru.javarush.country.entity.Country;
 
 import java.util.List;
 
-public class CountryDAOImpl implements CountryDAO{
+public class CountryDAOImpl implements CountryDAO {
 
     private final SessionFactory sessionFactory;
 

@@ -15,7 +15,7 @@ import static java.util.Objects.nonNull;
 
 public class TestingRedisService implements TestingService {
 
-    public static final Logger logger = LoggerFactory.getLogger(TestingRedisService.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestingRedisService.class);
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
 

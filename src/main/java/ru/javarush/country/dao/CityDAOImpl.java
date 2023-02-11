@@ -6,7 +6,6 @@ import ru.javarush.country.entity.City;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class CityDAOImpl implements CityDAO {
 

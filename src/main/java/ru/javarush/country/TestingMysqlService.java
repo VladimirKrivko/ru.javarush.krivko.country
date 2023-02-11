@@ -17,13 +17,13 @@ import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
-public class TestingMySQLService implements TestingService{
+public class TestingMysqlService implements TestingService{
 
     private final SessionFactory sessionFactory;
     private final CityDAO cityDAO;
     private final CountryDAO countryDAO;
 
-    public TestingMySQLService(final SessionFactory sessionFactory) {
+    public TestingMysqlService(final SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         cityDAO = new CityDAOImpl(sessionFactory);
         countryDAO = new CountryDAOImpl(sessionFactory);

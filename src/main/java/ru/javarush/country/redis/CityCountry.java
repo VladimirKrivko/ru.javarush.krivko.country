@@ -17,26 +17,15 @@ import java.util.Set;
 @ToString
 public class CityCountry {
     private Integer id;
-
     private String cityName;
-
     private String district;
-
     private Integer population;
-
     private String countryCode;
-
     private String alternativeCountryCode;
-
     private String countryName;
-
     private Continent continent;
-
     private String region;
-
     private BigDecimal countryArea;
-
     private Integer countryPopulation;
-
     private Set<Language> languages;
 }
