@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.javarush.country.redis.CityCountry;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import static java.util.Objects.nonNull;
 
 public class TestingRedisService implements TestingService {
 
+    public static final Logger logger = LoggerFactory.getLogger(TestingRedisService.class);
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
 
@@ -50,7 +53,8 @@ public class TestingRedisService implements TestingService {
 
     public void shutdown() {
         if (nonNull(redisClient)) {
-            redisClient.shutdown();
+            redisClient.close();
+            logger.info("redisClient is closed");
         }
     }
 }
