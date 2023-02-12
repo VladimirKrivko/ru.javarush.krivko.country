@@ -45,6 +45,7 @@ public class TestingRedisService implements TestingService {
                 try {
                     mapper.readValue(value, CityCountry.class);
                 } catch (JsonProcessingException e) {
+                    //loger.error("");
                     e.printStackTrace();
                 }
             }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
-    private static final int NUMBER_OF_TEST_ITERATIONS = 10;
+    private static final int NUMBER_OF_TEST_ITERATIONS = 30;
 
     public static void main(String[] args) {
         SessionProvider sessionProvider = new SessionProvider();

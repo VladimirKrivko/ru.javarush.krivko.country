@@ -34,10 +34,12 @@ public class SpeedTestOfDataAvailability {
         }
         OptionalDouble averageFirstResult = LongStream.of(resultsFirstExecutionTime).average();
         OptionalDouble averageSecondResult = LongStream.of(resultsSecondExecutionTime).average();
-        
-        //TODO: добавить в сервис получение имени ресурса.
-        logger.info("{}:\t{} ms", "average time for MySQL", averageFirstResult.getAsDouble());
-        logger.info("{}:\t{} ms", "average time for Redis", averageSecondResult.getAsDouble());
+
+        String nameFirst = testingServiceFirst.getClass().getSimpleName();
+        String nameSecond = testingServiceSecond.getClass().getSimpleName();
+
+        System.out.printf("%s:\t%.2f ms\n", "Average time for " + nameFirst, averageFirstResult.getAsDouble());
+        System.out.printf("%s:\t%.2f ms\n", "Average time for " + nameSecond, averageSecondResult.getAsDouble());
     }
 
     private static long getExecutionTime(TestingService ts, List<Integer> ids) {
@@ -53,9 +55,7 @@ public class SpeedTestOfDataAvailability {
     private List<Integer> getListIds() {
         List<Integer> ids = new ArrayList<>(numberOfTestIterations);
         for (int i = 0; i < numberOfTestIterations; i++) {
-
-            //TODO: получать bound из базки? или не?
-            ids.add(i, Randomizer.getRandomInteger(4000));
+            ids.add(i, Randomizer.getRandomInteger(3000));
         }
         return ids;
     }

@@ -9,6 +9,6 @@ public class Randomizer {
     }
 
     public static int getRandomInteger(int bound) {
-        return ThreadLocalRandom.current().nextInt(0, bound + 1);
+        return ThreadLocalRandom.current().nextInt(1, bound + 1);
     }
 }
