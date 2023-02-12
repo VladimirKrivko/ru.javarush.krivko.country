@@ -13,6 +13,7 @@ import ru.javarush.country.entity.CountryLanguage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static java.util.Objects.nonNull;
@@ -50,7 +51,7 @@ public class TestingMysqlService implements TestingService{
         try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
             for (Integer id : ids) {
-                City city = cityDAO.getById(id);
+                City city = cityDAO.getById(id).get();
                 Set<CountryLanguage> languages = city.getCountry().getLanguages();
             }
             transaction.commit();

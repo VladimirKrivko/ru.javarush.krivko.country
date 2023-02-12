@@ -15,17 +15,11 @@ public class CityDAOImpl implements CityDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    //TODO: Optional не работает! Переделать.
     @Override
-    public City getById(Integer id) {
+    public Optional<City> getById(Integer id) {
         Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :id", City.class);
         query.setParameter("id", id);
-        City city = query.getSingleResult();
-        City result = Optional.ofNullable(city).orElseGet(() -> {
-            Query<City> defaultQuery = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = 1", City.class);
-            return defaultQuery.getSingleResult();
-        });
-        return result;
+        return Optional.of(query.getSingleResult());
     }
 
     @Override
