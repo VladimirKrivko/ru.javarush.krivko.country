@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CityDAO {
+
     public List<City> getItems(int offset, int limit);
 
     public int getTotalCount();

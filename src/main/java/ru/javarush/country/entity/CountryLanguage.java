@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @ToString
 public class CountryLanguage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

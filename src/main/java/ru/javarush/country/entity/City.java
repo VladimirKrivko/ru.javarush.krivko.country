@@ -22,6 +22,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class City {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

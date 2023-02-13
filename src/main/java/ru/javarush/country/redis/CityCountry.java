@@ -16,6 +16,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @ToString
 public class CityCountry {
+
     private Integer id;
     private String cityName;
     private String district;

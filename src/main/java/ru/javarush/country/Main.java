@@ -16,6 +16,7 @@ import ru.javarush.country.service.TestingRedisService;
 import java.util.List;
 
 public class Main {
+
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     private static final int NUMBER_OF_TEST_ITERATIONS = 30;
 

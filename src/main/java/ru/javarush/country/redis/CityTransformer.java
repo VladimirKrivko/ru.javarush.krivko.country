@@ -3,8 +3,6 @@ package ru.javarush.country.redis;
 import ru.javarush.country.entity.City;
 import ru.javarush.country.entity.Country;
 import ru.javarush.country.entity.CountryLanguage;
-import ru.javarush.country.redis.CityCountry;
-import ru.javarush.country.redis.Language;
 
 import java.util.List;
 import java.util.Set;
