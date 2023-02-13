@@ -31,7 +31,7 @@ public class TestingRedisService implements TestingService {
                 try {
                     sync.set(String.valueOf(cityCountry.getId()), mapper.writeValueAsString(cityCountry));
                 } catch (JsonProcessingException e) {
-                    e.printStackTrace();
+                    logger.error("failed", e);
                 }
             }
         }
@@ -45,8 +45,7 @@ public class TestingRedisService implements TestingService {
                 try {
                     mapper.readValue(value, CityCountry.class);
                 } catch (JsonProcessingException e) {
-                    //loger.error("");
-                    e.printStackTrace();
+                    logger.error("failed", e);
                 }
             }
         }
