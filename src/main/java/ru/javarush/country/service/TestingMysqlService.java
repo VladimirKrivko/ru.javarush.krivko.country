@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.service;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,7 +17,7 @@ import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
-public class TestingMysqlService implements TestingService{
+public class TestingMysqlService implements TestingService {
 
     private final SessionFactory sessionFactory;
     private final CityDAO cityDAO;

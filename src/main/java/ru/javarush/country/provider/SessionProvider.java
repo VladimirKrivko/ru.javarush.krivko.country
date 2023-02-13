@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.provider;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

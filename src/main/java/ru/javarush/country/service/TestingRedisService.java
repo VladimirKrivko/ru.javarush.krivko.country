@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

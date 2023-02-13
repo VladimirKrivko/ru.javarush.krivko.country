@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.provider;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;

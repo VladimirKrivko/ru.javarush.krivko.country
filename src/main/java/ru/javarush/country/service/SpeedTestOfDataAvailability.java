@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

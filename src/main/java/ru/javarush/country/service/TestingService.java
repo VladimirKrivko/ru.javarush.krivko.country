@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.service;
 
 import java.util.List;
 

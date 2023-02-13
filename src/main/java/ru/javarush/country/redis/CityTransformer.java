@@ -1,4 +1,4 @@
-package ru.javarush.country;
+package ru.javarush.country.redis;
 
 import ru.javarush.country.entity.City;
 import ru.javarush.country.entity.Country;
