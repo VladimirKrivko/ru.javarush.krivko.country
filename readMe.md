@@ -1,30 +1,30 @@
 <div style="text-align: justify">
-<h1 align="center">Итоговый проект четвертого модуля JavaRush.</h1>
+<h1 align="center">Final project of the 4 module JavaRush.</h1>
 <h1 align="center">Country</h1>
 
-#### Владимир Кривко.
+#### Vladimir Krivko.
 
-#### GitHub: *https://github.com/VladimirKrivko/ru.javarush.krivko.country* &emsp;&emsp;&emsp;*(ветка dev)*
+#### GitHub: *https://github.com/VladimirKrivko/ru.javarush.krivko.country* &emsp;&emsp;&emsp;*(branch dev)*
 
-#### Менторы: @Andrii Shylin (UA, Kyiv), @Yuriy Syrovatko.
-
----
-
-## Задача:
-&emsp; Есть реляционная БД MySQL с схемой (страна-город, язык по стране). И есть частый запрос города, который тормозит.
-Решение – вынести все данные, которые запрашиваются часто, в Redis (in memory storage типа ключ-значение).
-
-### Инструкция по запуску:
-- для запуска mysql в докере использовалась команда: _docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --restart unless-stopped -v mysql:/var/lib/mysql mysql:8_
-- для запуска redis в докере использовалась команда: _docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest_
-- Версия: Java 18.
-- Запуск программы: _src/main/java/ru/javarush/country/Main.java_
-- Количество циклов вычислений средней скорости доступа к данным в разных бд можно изменить в Main.java поле NUMBER_OF_TEST_ITERATIONS. По умолчанию стоит 30 циклов. 
+#### Mentors: @Andrii Shylin (UA, Kyiv), @Yuriy Syrovatko.
 
 ---
 
+## Task:
+&emsp; There is a relational MySQL database with a schema (country, city, countryLanguage). And there is a frequent request from the city, which slows down.
+The solution is to move all the data that is requested frequently to Redis (in memory storage of the key–value type).
+
+### Instructions for launching:
+- to run mysql in docker, the command was used: _docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --restart unless-stopped -v mysql:/var/lib/mysql mysql:8_
+- to run redis in docker, the command was used: _docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest_
+- Version: Java 18.
+- launching the program: _src/main/java/ru/javarush/country/Main.java_
+- the number of test cycles to compare the sampling frequency of data from databases is set in the NUMBER_OF_TEST_ITERATIONS field Main.java. (by default, it costs 30 cycles) 
+
 ---
 
-<h3 align="center"> &#128511; Спасибо за внимание! &#128511; </h3>
+---
+
+<h3 align="center"> &#128511; Thanks for your attention! &#128511; </h3>
 
 </div>
