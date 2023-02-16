@@ -63,10 +63,10 @@ public class Country {
     private BigDecimal lifeExpectancy;
 
     @Column(name = "gnp")
-    private BigDecimal GNP;
+    private BigDecimal gnp;
 
     @Column(name = "gnpo_id")
-    private BigDecimal GNPOId;
+    private BigDecimal gnpoId;
 
     @Column(name = "local_name", length = 45, nullable = false)
     private String localName;
