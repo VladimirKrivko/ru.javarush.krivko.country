@@ -3,10 +3,10 @@ package ru.javarush.country.service;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import ru.javarush.country.dao.CityDAO;
-import ru.javarush.country.dao.CityHibernateDAO;
-import ru.javarush.country.dao.CountryDAO;
-import ru.javarush.country.dao.CountryHibernateDAO;
+import ru.javarush.country.dao.CityDao;
+import ru.javarush.country.dao.CityHibernateDao;
+import ru.javarush.country.dao.CountryDao;
+import ru.javarush.country.dao.CountryHibernateDao;
 import ru.javarush.country.entity.City;
 import ru.javarush.country.entity.Country;
 import ru.javarush.country.entity.CountryLanguage;
@@ -21,13 +21,13 @@ public class TestingMysqlService implements TestingService {
 
     private static final int STEP_OF_FETCH_DATA = 500;
     private final SessionFactory sessionFactory;
-    private final CityDAO cityDAO;
-    private final CountryDAO countryDAO;
+    private final CityDao cityDAO;
+    private final CountryDao countryDAO;
 
     public TestingMysqlService(final SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-        cityDAO = new CityHibernateDAO(sessionFactory);
-        countryDAO = new CountryHibernateDAO(sessionFactory);
+        cityDAO = new CityHibernateDao(sessionFactory);
+        countryDAO = new CountryHibernateDao(sessionFactory);
     }
 
     public List<City> fetchData() {
@@ -50,7 +50,7 @@ public class TestingMysqlService implements TestingService {
         try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
             for (Integer id : ids) {
-                City city = cityDAO.getById(id).get();
+                City city = cityDAO.getById(id).orElseGet(() -> cityDAO.getById(1).get());
                 Set<CountryLanguage> languages = city.getCountry().getLanguages();
             }
             transaction.commit();

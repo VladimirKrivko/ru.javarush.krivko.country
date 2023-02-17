@@ -1,5 +1,6 @@
 package ru.javarush.country.dao;
 
+import jakarta.persistence.NoResultException;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import ru.javarush.country.entity.City;
@@ -7,11 +8,11 @@ import ru.javarush.country.entity.City;
 import java.util.List;
 import java.util.Optional;
 
-public class CityHibernateDAO implements CityDAO {
+public class CityHibernateDao implements CityDao {
 
     private final SessionFactory sessionFactory;
 
-    public CityHibernateDAO(SessionFactory sessionFactory) {
+    public CityHibernateDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
@@ -19,7 +20,12 @@ public class CityHibernateDAO implements CityDAO {
     public Optional<City> getById(Integer id) {
         Query<City> query = sessionFactory.getCurrentSession().createQuery("select c from City c join fetch c.country where c.id = :id", City.class);
         query.setParameter("id", id);
-        return Optional.of(query.getSingleResult());
+        try {
+            City city = query.getSingleResult();
+            return Optional.of(city);
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
     }
 
     @Override

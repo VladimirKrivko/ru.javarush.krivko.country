@@ -13,7 +13,7 @@ import ru.javarush.country.service.TestingRedisService;
 
 import java.util.List;
 
-public class SpeedTestApp {
+public class SpeedTestConsoleApp {
 
     private static final int NUMBER_OF_TEST_ITERATIONS = 30;
 

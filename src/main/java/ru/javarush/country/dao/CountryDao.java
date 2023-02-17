@@ -4,7 +4,7 @@ import ru.javarush.country.entity.Country;
 
 import java.util.List;
 
-public interface CountryDAO {
+public interface CountryDao {
 
     public List<Country> getAll();
 }

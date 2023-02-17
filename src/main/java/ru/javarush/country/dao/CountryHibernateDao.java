@@ -6,11 +6,11 @@ import ru.javarush.country.entity.Country;
 
 import java.util.List;
 
-public class CountryHibernateDAO implements CountryDAO {
+public class CountryHibernateDao implements CountryDao {
 
     private final SessionFactory sessionFactory;
 
-    public CountryHibernateDAO(SessionFactory sessionFactory) {
+    public CountryHibernateDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
