@@ -7,6 +7,7 @@ import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.javarush.country.exception.JsonProcessingRuntimeException;
 import ru.javarush.country.redis.CityCountry;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class TestingRedisService implements TestingService {
         }
     }
 
-    public void testData(List<Integer> ids) {
+    public void fetchData(List<Integer> ids) {
         try (StatefulRedisConnection<String, String> connect = redisClient.connect()) {
             RedisCommands<String, String> sync = connect.sync();
             for (Integer id : ids) {
@@ -46,6 +47,7 @@ public class TestingRedisService implements TestingService {
                     mapper.readValue(value, CityCountry.class);
                 } catch (JsonProcessingException e) {
                     logger.error("failed", e);
+                    throw new JsonProcessingRuntimeException(e.getMessage());
                 }
             }
         }

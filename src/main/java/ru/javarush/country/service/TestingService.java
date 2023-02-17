@@ -4,5 +4,7 @@ import java.util.List;
 
 public interface TestingService {
 
-    void testData(List<Integer> ids);
+    void fetchData(List<Integer> ids);
+
+    void shutdown();
 }

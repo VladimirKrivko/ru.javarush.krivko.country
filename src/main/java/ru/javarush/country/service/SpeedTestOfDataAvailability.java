@@ -44,7 +44,7 @@ public class SpeedTestOfDataAvailability {
 
     private static long getExecutionTime(TestingService ts, List<Integer> ids) {
         long start = System.currentTimeMillis();
-        ts.testData(ids);
+        ts.fetchData(ids);
         long stop = System.currentTimeMillis();
         long result = stop - start;
 

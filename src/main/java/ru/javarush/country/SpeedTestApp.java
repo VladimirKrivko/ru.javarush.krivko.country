@@ -15,9 +15,9 @@ import ru.javarush.country.service.TestingRedisService;
 
 import java.util.List;
 
-public class Main {
+public class SpeedTestApp {
 
-    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpeedTestApp.class);
     private static final int NUMBER_OF_TEST_ITERATIONS = 30;
 
     public static void main(String[] args) {

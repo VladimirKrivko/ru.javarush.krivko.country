@@ -46,7 +46,7 @@ public class TestingMysqlService implements TestingService {
         }
     }
 
-    public void testData(List<Integer> ids) {
+    public void fetchData(List<Integer> ids) {
         try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
             for (Integer id : ids) {

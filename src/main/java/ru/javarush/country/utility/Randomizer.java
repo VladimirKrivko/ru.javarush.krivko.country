@@ -2,7 +2,7 @@ package ru.javarush.country.utility;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Randomizer {
+public final class Randomizer {
 
     private Randomizer() {
         throw new IllegalStateException("Utility class");
