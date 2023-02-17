@@ -18,8 +18,8 @@ The solution is to move all the data that is requested frequently to Redis (in m
 - to run mysql in docker, the command was used: _docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --restart unless-stopped -v mysql:/var/lib/mysql mysql:8_
 - to run redis in docker, the command was used: _docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest_
 - Version: Java 18.
-- launching the program: _src/main/java/ru/javarush/country/Main.java_
-- the number of test cycles to compare the sampling frequency of data from databases is set in the NUMBER_OF_TEST_ITERATIONS field Main.java. (by default, it costs 30 cycles) 
+- launching the program: _src/main/java/ru/javarush/country/SpeedTestConsoleApp.java_
+- the number of test cycles to compare the sampling frequency of data from databases is set in the NUMBER_OF_TEST_ITERATIONS field SpeedTestConsoleApp.java. (by default, it costs 30 cycles) 
 
 ---
 
