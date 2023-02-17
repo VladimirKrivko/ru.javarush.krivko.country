@@ -12,6 +12,7 @@ import java.util.stream.LongStream;
 public class SpeedTestOfDataAvailability {
 
     private static final Logger logger = LoggerFactory.getLogger(SpeedTestOfDataAvailability.class);
+    private static final int UPPER_BOUND = 3000;
     private final TestingService testingServiceFirst;
     private final TestingService testingServiceSecond;
     private final long[] resultsFirstExecutionTime;
@@ -55,7 +56,7 @@ public class SpeedTestOfDataAvailability {
     private List<Integer> getListIds() {
         List<Integer> ids = new ArrayList<>(numberOfTestIterations);
         for (int i = 0; i < numberOfTestIterations; i++) {
-            ids.add(i, Randomizer.getRandomInteger(3000));
+            ids.add(i, Randomizer.getRandomInteger(UPPER_BOUND));
         }
         return ids;
     }

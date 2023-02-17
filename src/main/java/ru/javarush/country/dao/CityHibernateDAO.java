@@ -7,11 +7,11 @@ import ru.javarush.country.entity.City;
 import java.util.List;
 import java.util.Optional;
 
-public class CityDAOImpl implements CityDAO {
+public class CityHibernateDAO implements CityDAO {
 
     private final SessionFactory sessionFactory;
 
-    public CityDAOImpl(SessionFactory sessionFactory) {
+    public CityHibernateDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
