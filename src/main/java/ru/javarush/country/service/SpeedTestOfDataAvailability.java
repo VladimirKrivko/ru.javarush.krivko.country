@@ -1,5 +1,6 @@
 package ru.javarush.country.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.javarush.country.utility.Randomizer;
@@ -9,9 +10,9 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.stream.LongStream;
 
+@Slf4j
 public class SpeedTestOfDataAvailability {
 
-    private static final Logger logger = LoggerFactory.getLogger(SpeedTestOfDataAvailability.class);
     private static final int UPPER_BOUND = 3000;
     private final TestingService testingServiceFirst;
     private final TestingService testingServiceSecond;
@@ -49,7 +50,7 @@ public class SpeedTestOfDataAvailability {
         long stop = System.currentTimeMillis();
         long result = stop - start;
 
-        logger.info("{}:\t{} ms", ts.getClass().getSimpleName(), result);
+        log.info("{}:\t{} ms", ts.getClass().getSimpleName(), result);
         return result;
     }
 

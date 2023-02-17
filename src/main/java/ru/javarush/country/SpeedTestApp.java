@@ -2,8 +2,6 @@ package ru.javarush.country;
 
 import io.lettuce.core.RedisClient;
 import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.javarush.country.entity.City;
 import ru.javarush.country.provider.RedisClientProvider;
 import ru.javarush.country.provider.SessionProvider;
@@ -17,7 +15,6 @@ import java.util.List;
 
 public class SpeedTestApp {
 
-    private static final Logger logger = LoggerFactory.getLogger(SpeedTestApp.class);
     private static final int NUMBER_OF_TEST_ITERATIONS = 30;
 
     public static void main(String[] args) {

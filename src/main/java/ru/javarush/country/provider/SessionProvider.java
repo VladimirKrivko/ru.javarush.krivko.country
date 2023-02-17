@@ -10,6 +10,7 @@ import ru.javarush.country.entity.CountryLanguage;
 import java.util.Properties;
 
 public class SessionProvider {
+
     private final SessionFactory sessionFactory;
 
     public SessionProvider() {

@@ -5,8 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import ru.javarush.country.exception.JsonProcessingRuntimeException;
 import ru.javarush.country.redis.CityCountry;
 
@@ -14,9 +13,9 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
+@Slf4j
 public class TestingRedisService implements TestingService {
 
-    private static final Logger logger = LoggerFactory.getLogger(TestingRedisService.class);
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
 
@@ -32,7 +31,8 @@ public class TestingRedisService implements TestingService {
                 try {
                     sync.set(String.valueOf(cityCountry.getId()), mapper.writeValueAsString(cityCountry));
                 } catch (JsonProcessingException e) {
-                    logger.error("failed", e);
+                    log.error("failed", e);
+                    throw new JsonProcessingRuntimeException(e.getMessage());
                 }
             }
         }
@@ -46,7 +46,7 @@ public class TestingRedisService implements TestingService {
                 try {
                     mapper.readValue(value, CityCountry.class);
                 } catch (JsonProcessingException e) {
-                    logger.error("failed", e);
+                    log.error("failed", e);
                     throw new JsonProcessingRuntimeException(e.getMessage());
                 }
             }
@@ -56,7 +56,7 @@ public class TestingRedisService implements TestingService {
     public void shutdown() {
         if (nonNull(redisClient)) {
             redisClient.close();
-            logger.info("redisClient is closed");
+            log.info("redisClient is closed");
         }
     }
 }
