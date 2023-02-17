@@ -22,7 +22,7 @@ public class CityHibernateDao implements CityDao {
         query.setParameter("id", id);
         try {
             City city = query.getSingleResult();
-            return Optional.of(city);
+            return Optional.ofNullable(city);
         } catch (NoResultException e) {
             return Optional.empty();
         }

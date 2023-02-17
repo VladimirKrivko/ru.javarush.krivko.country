@@ -17,6 +17,7 @@ public class SpeedTestOfDataAvailability {
     private final long[] resultsFirstExecutionTime;
     private final long[] resultsSecondExecutionTime;
     private final int numberOfTestIterations;
+
     public SpeedTestOfDataAvailability(TestingService testingServiceFirst, TestingService testingServiceSecond, int numberOfTestIterations) {
         this.testingServiceFirst = testingServiceFirst;
         this.testingServiceSecond = testingServiceSecond;

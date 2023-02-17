@@ -10,6 +10,7 @@ import ru.javarush.country.exception.JsonProcessingRuntimeException;
 import ru.javarush.country.redis.CityCountry;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Objects.nonNull;
 
@@ -42,13 +43,15 @@ public class TestingRedisService implements TestingService {
         try (StatefulRedisConnection<String, String> connect = redisClient.connect()) {
             RedisCommands<String, String> sync = connect.sync();
             for (Integer id : ids) {
-                String value = sync.get(String.valueOf(id));
-                try {
-                    mapper.readValue(value, CityCountry.class);
-                } catch (JsonProcessingException e) {
-                    log.error("failed", e);
-                    throw new JsonProcessingRuntimeException(e.getMessage());
-                }
+                Optional<String> optionalValue = Optional.ofNullable(sync.get(String.valueOf(id)));
+                Optional<CityCountry> cityCountry = optionalValue.map(value -> {
+                    try {
+                        return mapper.readValue(value, CityCountry.class);
+                    } catch (JsonProcessingException e) {
+                        log.error("failed", e);
+                        throw new JsonProcessingRuntimeException(e.getMessage());
+                    }
+                });
             }
         }
     }
